@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
+// Core
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { StyleSheet, SafeAreaView, StatusBar, View } from 'react-native';
+// Redux
+import { Provider } from 'react-redux'
+import store from './src/redux/store'
+// Components
+import Navbar from './src/components/Navbar';
+import TodoContainer from './src/components/TodoContainer';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
+  sidebar: {
+    backgroundColor: '#3949ab',
+  }
 });
+
+function App() {
+  return (
+    <Provider store={store()}>
+      <SafeAreaView style={styles.container}>
+        <StatusBar translucent backgroundColor={'#3949ab'} barStyle="dark-content" />
+        <Navbar text='Todo App!'/>
+        <TodoContainer />
+      </SafeAreaView>
+    </Provider>
+
+  );
+}
+export default App
