@@ -3,6 +3,7 @@ import without from 'lodash/without'
 
 const initialState = {
   todoList: [],
+  doneList: []
 };
 
 const slice = createSlice({
@@ -14,13 +15,18 @@ const slice = createSlice({
     },
     deleteTodo: (state, action) => {
       state.todoList = without(state.todoList, action.payload)
+    },
+    doneTodo: (state, action ) => {
+      state.doneList = state.doneList.concat(action.payload)
+      state.todoList = without(state.todoList, action.payload)
     }
   }
 });
 
 export const {
   createTodo,
-  deleteTodo
+  deleteTodo,
+  doneTodo
 } = slice.actions
 
 export default slice.reducer

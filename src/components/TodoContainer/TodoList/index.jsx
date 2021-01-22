@@ -1,11 +1,13 @@
 // Core
 import React from 'react'
-import {View, FlatList} from "react-native"
+import {FlatList} from "react-native"
 // Redux
 import {getTodos} from "../../../redux/selectors/todoSelectors";
 import {useSelector} from "react-redux";
 // Components
 import TodoItem from "./TodoItem";
+// Styles
+import styles from './styles'
 
 
 function TodoList() {
@@ -14,7 +16,7 @@ function TodoList() {
 
   return (
     <FlatList
-      // style={}
+      style={styles.list}
       data={list}
       renderItem={({item, index}) => (
         <TodoItem title={item} id={index + 1}/>

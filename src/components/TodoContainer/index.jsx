@@ -10,7 +10,7 @@ import TodoList from "./TodoList";
 function TodoContainer() {
   return (
     <View style={styles.container}>
-      <Text>Container</Text>
+      <Text>Add your tasks</Text>
       <AddTodo/>
       <TodoList/>
     </View>
